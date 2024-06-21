@@ -55,7 +55,9 @@ public class PrenotazioneService {
         prenotazione.setUtente(utente);
         prenotazione.setData(data);
 
+        System.out.println("\n"+ prenotazione + "  "+ " ✔️salvata correttamente!✔️");
         return prenotazioneRepository.save(prenotazione);
+
     }
 
 

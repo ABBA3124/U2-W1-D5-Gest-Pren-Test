@@ -13,11 +13,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
+import javax.sound.midi.Soundbank;
+import java.sql.SQLOutput;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 @Component
 public class MyRunner implements CommandLineRunner {
@@ -99,6 +98,70 @@ public class MyRunner implements CommandLineRunner {
             System.out.println("\nPostazioni Trovate  --> " + postazioni.size());
             System.out.println("\nLista postazioni --> " + postazione.toString());
 
+
+        System.out.println("\n\t");
+
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("<-- menu -->");
+        System.out.println("Prenota tavolo --> 1 ");
+        System.out.println("Esci --> 0 ");
+
+        int ins = scanner.nextInt();
+        switch (ins) {
+            case 0:
+                System.out.println("ciao");
+                break;
+            case 1:
+                scanner.nextLine();
+                System.out.println("inserisci username");
+                String str1 = scanner.nextLine();
+                System.out.println("inserisci nome completo");
+                String str2 = scanner.nextLine();
+                System.out.println("inserisci email");
+                String str3 = scanner.nextLine();
+                Utente utente3 = new Utente(str1,str2,str3);
+                System.out.println("utente creato --> " + utente3.toString());
+                System.out.println("vuoi salvere l'utente " + utente3.getNomeCompleto()  +" --> (Y/N)");
+                String str4 = scanner.nextLine();
+                if (str4.equals("y")||str4.equals("yes")||str4.equals("Y")||str4.equals("YES")) {
+                    utenteService.salvaUtente(utente3);
+                    System.out.println("Utente salvato con successo!");
+
+                } else {
+                    System.out.println("Creazione Utente Annullata");
+                    break;
+                }
+
+                scanner.nextLine();
+                System.out.println("\t<-- PRENOTAZIONE -->");
+                System.out.println("inserisci anno");
+                int anno = scanner.nextInt();
+
+                System.out.println("inserisci mese");
+                int mese = scanner.nextInt();
+
+                System.out.println("inserisci giorno");
+                int giorno = scanner.nextInt();
+
+                Prenotazione prenotazione244 = new Prenotazione(utente3,postazione,LocalDate.of(anno,mese,giorno));
+
+                System.out.println("Dettagli Prenotazione --> " + prenotazione244);
+                scanner.nextLine();
+                System.out.println("Vuoi confermare la prenotazione ---> (Y/N)");
+                String str1516 = scanner.nextLine();
+                if (str1516.equals("y")||str1516.equals("yes")||str1516.equals("Y")||str1516.equals("YES")) {
+                    prenotazioneService.prenotaPostazione(postazione.getId(),utente3.getId(),LocalDate.of(anno,mese,giorno));
+                    System.out.println("Prenotazione salvata con successo!");
+                } else {
+                    System.out.println("Prenotazione annullata");
+                    break;
+                }
+
+
+
+                break;
+        }
 
         System.out.println("\n\t");
     }
