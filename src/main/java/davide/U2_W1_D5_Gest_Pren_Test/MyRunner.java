@@ -16,8 +16,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Random;
+import java.util.UUID;
 
 @Component
 public class MyRunner implements CommandLineRunner {
@@ -50,22 +52,35 @@ public class MyRunner implements CommandLineRunner {
 
 
         Edificio edificio = (Edificio) context.getBean("edificio");
-        edificioService.salvaEdificio(edificio);
+        //edificioService.salvaEdificio(edificio);
+
 
 
 
             //<------------ Postazione ------------>
         Postazione postazione = (Postazione) context.getBean("postazione");
-        postazioneService.salvaPostazione(postazione);
+        //postazioneService.salvaPostazione(postazione);
+
+
+
 
             //<------------ Utenti ------------>
         Utente utente = (Utente) context.getBean("utente");
-        utenteService.salvaUtente(utente);
+        //utenteService.salvaUtente(utente);
+
+
+
 
             //<------------ Prenotazioni ------------>
         Prenotazione prenotazione = (Prenotazione) context.getBean("prenotazione");
-        prenotazioneService.salvaPrenozione(prenotazione);
+        //prenotazioneService.salvaPrenozione(prenotazione);
 
+
+        try {
+        prenotazioneService.prenotaPostazione(UUID.fromString("1956d30a-0f9b-4eb5-9fd0-fe1ea8d396ad"), UUID.fromString("5d91d74e-befb-4e40-8a52-2acfb8f7c33d"), LocalDate.now());
+        } catch (Exception e) {
+            System.out.println("-->" + e.getMessage());
+        }
 
 
         System.out.println("\n");
