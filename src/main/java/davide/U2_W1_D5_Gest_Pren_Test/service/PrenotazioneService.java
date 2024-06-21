@@ -41,7 +41,7 @@ public class PrenotazioneService {
               .orElseThrow(() -> new Exception("Utente non trovato"));
 
         if (prenotazioneRepository.existsByPostazioneAndData(postazione, data)) {
-            throw new Exception("Postazione già prenotata per la data selezionata");
+            throw new Exception("Postazione già prenotata per la data selezionata ---> " + postazione.toString());
         }
 
 
@@ -57,6 +57,9 @@ public class PrenotazioneService {
 
         return prenotazioneRepository.save(prenotazione);
     }
+
+
+
 }
 
 

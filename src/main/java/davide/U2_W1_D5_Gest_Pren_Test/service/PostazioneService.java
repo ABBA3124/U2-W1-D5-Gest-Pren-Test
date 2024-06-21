@@ -3,6 +3,7 @@ package davide.U2_W1_D5_Gest_Pren_Test.service;
 
 import davide.U2_W1_D5_Gest_Pren_Test.entities.Postazione;
 import davide.U2_W1_D5_Gest_Pren_Test.entities.Prenotazione;
+import davide.U2_W1_D5_Gest_Pren_Test.entities.TipoPostazione;
 import davide.U2_W1_D5_Gest_Pren_Test.entities.Utente;
 import davide.U2_W1_D5_Gest_Pren_Test.repositories.PostazioneRepository;
 import davide.U2_W1_D5_Gest_Pren_Test.repositories.PrenotazioneRepository;
@@ -29,6 +30,11 @@ public class PostazioneService {
     }
 
 
+    public  List<Postazione>  cercaPostazione (TipoPostazione tipo, String città) {
+        return postazioneRepository.findByTipoAndCittà(tipo,città);
+
+
+    }
 
 
 
