@@ -82,8 +82,6 @@ public class MyRunner implements CommandLineRunner {
 
 
 
-
-
             TipoPostazione tipo = TipoPostazione.OPENSPACE;
             String città = "South Chris";
 
@@ -98,9 +96,10 @@ public class MyRunner implements CommandLineRunner {
             System.out.println("Postazioni Trovate per la tua ricerca --> " + postazioni.size());
 
             }
-            System.out.println("Postazioni Trovate  --> " + postazioni.size());
-            System.out.println("Lista postazioni --> " + postazione.getDescrizione());
+            System.out.println("\nPostazioni Trovate  --> " + postazioni.size());
+            System.out.println("\nLista postazioni --> " + postazione.toString());
 
 
+        System.out.println("\n\t");
     }
 }
