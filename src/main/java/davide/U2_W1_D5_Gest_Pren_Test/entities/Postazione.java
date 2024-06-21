@@ -42,9 +42,7 @@ public class Postazione  {
     }
 }
 
-enum TipoPostazione {
-    PRIVATO, OPENSPACE, SALA_RIUNIONI
-}
+
 
 
 
