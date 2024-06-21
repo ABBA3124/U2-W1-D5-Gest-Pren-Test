@@ -49,21 +49,21 @@ public class MyRunner implements CommandLineRunner {
 
 
         Edificio edificio = (Edificio) context.getBean("edificio");
-        //edificioService.salvaEdificio(edificio);
+        edificioService.salvaEdificio(edificio);
 
 
 
 
             //<------------ Postazione ------------>
         Postazione postazione = (Postazione) context.getBean("postazione");
-        //postazioneService.salvaPostazione(postazione);
+        postazioneService.salvaPostazione(postazione);
 
 
 
 
             //<------------ Utenti ------------>
         Utente utente = (Utente) context.getBean("utente");
-        //utenteService.salvaUtente(utente);
+        utenteService.salvaUtente(utente);
 
 
 
@@ -73,6 +73,10 @@ public class MyRunner implements CommandLineRunner {
         //prenotazioneService.salvaPrenozione(prenotazione);
 
 
+
+        //Controllo
+        //verifica se una postazione è già prenotata per una data specifica
+        //verifica se un utente ha già una prenotazione per una data specifica
         try {
         prenotazioneService.prenotaPostazione(UUID.fromString("1956d30a-0f9b-4eb5-9fd0-fe1ea8d396ad"), UUID.fromString("5d91d74e-befb-4e40-8a52-2acfb8f7c33d"), LocalDate.of(2024,06,21));
         } catch (Exception e) {
@@ -80,7 +84,7 @@ public class MyRunner implements CommandLineRunner {
         }
 
 
-
+//cerca postazione per tipo  e per città
             TipoPostazione tipo = TipoPostazione.OPENSPACE;
             String città = "South Chris";
 
@@ -101,7 +105,7 @@ public class MyRunner implements CommandLineRunner {
 
         System.out.println("\n\t");
 
-
+// prova scanner (stavo giocando nulla di serissimo)
         Scanner scanner = new Scanner(System.in);
         System.out.println("<-- menu -->");
         System.out.println("Prenota tavolo --> 1 ");

@@ -33,6 +33,10 @@ public class PrenotazioneService {
     }
 
 
+
+
+    //verifica se una postazione è già prenotata per una data specifica
+//verifica se un utente ha già una prenotazione per una data specifica
     public Prenotazione prenotaPostazione(UUID postazioneId, UUID utenteId, LocalDate data) throws Exception {
         Postazione postazione = postazioneRepository.findById(postazioneId)
                 .orElseThrow(() -> new Exception("Postazione non trovata"));
